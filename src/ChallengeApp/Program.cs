@@ -7,23 +7,26 @@ namespace ChallengeApp
     {
         static void Main(string[] args)
         {
-            var driver = new SavedDriver("Jan");
+            var driver = new InMemoryDriv("Janek");
+
+            var fullData = new InMemoryDriv("Jan", "Janowski", "Fiat", 'M');
+
+            var name = driver.Name;
+
+            driver.Name = "Jan";
+
+            var f = InMemoryDriv.FIRM;
+
+            driver.ChangeSurname("Janow8ski");
+
+            driver.CarBrand("Fiat");
+
             driver.ConsumptionAdded += OnConsumptionAdded;
             driver.ConsumptionLow += OnConsumptionLow;
 
-            var name = driver.Name;
-            
-            driver.Name = "New Jan";
-            var f = InMemoryDriver.FIRM;
-
             EnterDriver(driver, f);
 
-            // driver.AddConsumption(4.8);
-            //  driver.AddConsumption("5+");
-            //  driver.AddConsumption("five");
-            var driv = new SavedDriver("Jerzy");
-            //driv.ChangeName("Jerz7");
-            driver.CarBrand("");
+
             driver.DriversAge();
 
             var stats = driver.GetStatistics();
@@ -32,7 +35,6 @@ namespace ChallengeApp
             Console.WriteLine($"Low:{stats.Low}");
             Console.WriteLine($"Average:{stats.Average}");
             Console.WriteLine($"Letter:{stats.Letter}");
-            
         }
 
         private static void EnterDriver(IDriver driver, string f)
@@ -46,13 +48,21 @@ namespace ChallengeApp
                 {
                     break;
                 }
-                try
-                {                  
-                    var consumption = double.Parse(input);
-                    driver.AddConsumption(consumption);     
 
-                   // driver.AddConsumption(input);
-                }                
+                try
+
+                {
+                    if (input!= null)
+                    {
+                        var consumption = double.Parse(input);
+                        driver.AddConsumption(consumption);
+                    }
+                    else
+                    {
+                        driver.AddConsumption(input);
+                    }
+                    
+                }
                 catch (FormatException ex)
                 {
                     Console.WriteLine(ex.Message);
@@ -63,34 +73,34 @@ namespace ChallengeApp
                 }
                 finally
                 {
-                    //Console.WriteLine("Here is finally");
+                    Console.WriteLine("Here is finally");
                 }
             }
         }
 
-        static void OnConsumptionAdded(object sender, EventArgs args) 
+        static void OnConsumptionAdded(object sender, EventArgs args)
         {
             Console.WriteLine("New consumption is added");
         }
-        static void OnConsumptionLow(object sender, EventArgs args) 
+        static void OnConsumptionLow(object sender, EventArgs args)
         {
             Console.WriteLine("Oh yes! We should inform boss about that");
-        }
-
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
         }
     }
 }
 
+
+// public override bool Equals(object obj)
+//         {
+//             return base.Equals(obj);
+//         }
+
+//         public override int GetHashCode()
+//         {
+//             return base.GetHashCode();
+//         }
+
+//         public override string ToString()
+//         {
+//             return base.ToString();
+//         }

@@ -23,10 +23,6 @@ namespace ChallengeApp
         public virtual void DriversAge()
         {
             throw new NotImplementedException();
-        }     
-         public string Name { get; set; }
-         public string Surname { get; set; }
-         public string Car { get; set; }
-         public char Sex { get; }    
+        }       
     }
 }

@@ -5,8 +5,9 @@ using Xunit;
 namespace Challenge.Tests
 {
     public class TypeTests
-    { public delegate string WriteMessage(string message);
-        
+    {
+        public delegate string WriteMessage(string message);
+
         int counter = 0;
         [Fact]
         public void WriteMessageDelegateCanPointToMethod()
@@ -37,8 +38,8 @@ namespace Challenge.Tests
             var driv1 = GetDriver("Jan");
             var driv2 = GetDriver("Marek");
 
-        Assert.NotSame(driv1, driv2);
-        Assert.False(Object.ReferenceEquals(driv1, driv2));
+            Assert.NotSame(driv1, driv2);
+            Assert.False(Object.ReferenceEquals(driv1, driv2));
         }
         [Fact]
         public void TwoVarsCanReferenceSameObjects()
@@ -46,8 +47,8 @@ namespace Challenge.Tests
             var driv1 = GetDriver("Jan");
             var driv2 = driv1;
 
-        Assert.Same(driv1, driv2);
-        Assert.True(Object.ReferenceEquals(driv1, driv2));
+            Assert.Same(driv1, driv2);
+            Assert.True(Object.ReferenceEquals(driv1, driv2));
         }
         public void CanSetNameFromReference()
         {
@@ -57,24 +58,24 @@ namespace Challenge.Tests
         }
         public void CSharpCanPassByRef()
         {
-             //Driver driv1 = null; 
+
             var driv1 = GetDriver("Driver 1");
-            GetDriverSetName( out driv1, "NewName");
+            GetDriverSetName(out driv1, "NewName");
             Assert.Equal("NewName", driv1.Name);
         }
-        private void GetDriverSetName(out Driver driv, string name)
+        private void GetDriverSetName(out InMemoryDriv driv, string name)
         {
-        driv = new Driver(name);
+            driv = new InMemoryDriv(name);
         }
-        private Driver GetDriver(string name)
+        private InMemoryDriv GetDriver(string name)
         {
-        return new Driver(name);
+            return new InMemoryDriv(name);
         }
-        public void SetName(Driver driver, string name)
+        public void SetName(InMemoryDriv driver, string name)
         {
-            driver.Name=name;
+            driver.Name = name;
         }
-        
+
         public void Test1()
         {
             var x = GetInt();
@@ -82,7 +83,7 @@ namespace Challenge.Tests
 
             Assert.Equal(3, x);
         }
-    
+
         private void SetInt(ref int x)
         {
             x = 42;
@@ -99,13 +100,11 @@ namespace Challenge.Tests
             Assert.Equal("Lucy", x);
             Assert.Equal("LUCY", upper);
         }
-        private string MakeUppercase( string parameter)
+        private string MakeUppercase(string parameter)
         {
             return parameter.ToUpper();
         }
-        
-        }
-     
+
     }
-// Wszystkie cechy ucznia, które powinny być publiczne wystaw w postaci getter’ów i setter’ów. Przypilnuj, które z nich powinny mieć publiczny 'seter’
-//Nazwij i napisz obsługę zdarzenia, które przy każdym dodaniu oceny poniżej 3 wyświetli informacje: „Oh no! We should inform student’s parents about this fact”
+
+}

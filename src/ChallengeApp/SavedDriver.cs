@@ -6,12 +6,14 @@ namespace ChallengeApp
 {
     public class SavedDriver : DriverBase
     {
+        private List<double> consumptions = new List<double>();
         private const string fileName = "consumption.txt";
         private const string audit = "_audit.txt";
-        DateTime saveUtcNow = DateTime.UtcNow;
+        DateTime saveNow = DateTime.Now;
 
         public SavedDriver(string name) : base(name)
         {
+            consumptions = new List<double>();
         }
 
         public SavedDriver(string name, string surname, string car, char sex) : base(name, surname, car, sex)
@@ -23,34 +25,116 @@ namespace ChallengeApp
 
         public override void AddConsumption(double consumption)
         {
-          using(var writer = File.AppendText($"{Name}_{fileName}"))
-          {
-            writer.WriteLine(consumption);
-            if(ConsumptionAdded != null)
             {
-              ConsumptionAdded(this, new EventArgs());
+                if (consumption >= 4.0 && consumption <= 10.0)
+                {
+                    this.consumptions.Add(consumption);
+
+                    if (ConsumptionAdded != null)
+                    {
+                        ConsumptionAdded(this, new EventArgs());
+                    }
+                    if (consumption < 6 && ConsumptionLow != null)
+                    {
+                        ConsumptionLow(this, new EventArgs());
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException($"Invalid argumnet: {nameof(consumption)}");
+                }
             }
-          }         
-          //writer.Dispose();
+
+            using (var writer = File.AppendText($"{Name}_{fileName}"))
+            {
+                writer.WriteLine(consumption);
+                if (ConsumptionAdded != null)
+                {
+                    ConsumptionAdded(this, new EventArgs());
+                }
+            }   
         }
         public override void AddConsumption(string consumption)
         {
-            using(var writer = File.AppendText($"{Name}_{audit}"))
-          {
-            writer.WriteLine(consumption);
-            writer.WriteLine(saveUtcNow);
-            if(ConsumptionAdded != null)
+            int result;
+            int.TryParse(consumption, out result);
+            if (result >= 4 && result <= 10)
             {
-              ConsumptionAdded(this, new EventArgs());
+                this.consumptions.Add(result);
             }
-          }         
+            else
+            {
+                switch (consumption)
+                {
+                    case "4+":
+                        this.AddConsumption(4.5);
+                        break;
+                    case "5+":
+                        this.AddConsumption(5.5);
+                        break;
+                    case "6+":
+                        this.AddConsumption(6.5);
+                        break;
+                    case "7+":
+                        this.AddConsumption(7.5);
+                        break;
+                    case "8+":
+                        this.AddConsumption(8.5);
+                        break;
+                    case "9+":
+                        this.AddConsumption(9.5);
+                        break;
+                    case "10-":
+                        this.AddConsumption(9.75);
+                        break;
+                    case "9-":
+                        this.AddConsumption(8.75);
+                        break;
+                    case "8-":
+                        this.AddConsumption(7.75);
+                        break;
+                    case "7-":
+                        this.AddConsumption(6.75);
+                        break;
+                    case "6-":
+                        this.AddConsumption(5.75);
+                        break;
+                    case "5-":
+                        this.AddConsumption(4.75);
+                        break;
+                    default:
+                        throw new ArgumentException($"Invalid argumnet: {nameof(consumption)}");
+                }
+            }
+            using (var writer = File.AppendText($"{Name}_{audit}"))
+            {
+                writer.WriteLine($"{consumption} of {saveNow}");
+                if (ConsumptionAdded != null)
+                {
+                    ConsumptionAdded(this, new EventArgs());
+                }
+            }
         }
         public override void CarBrand(string car)
         {
             throw new NotImplementedException();
         }
+        public override Statistics GetStatistics()
+        {
+            var result = new Statistics();
+
+            using (var reader = File.OpenText($"{Name}_{audit}"))
+            {
+                var line = reader.ReadLine();
+                while (line != null)
+                {
+                    var number = double.Parse(line);
+                    result.Add(number);
+                    line = reader.ReadLine();
+                }
+            }
+            return result;
+        }
+
     }
 }
-// Zrób dwie implementacje Twojej bazowej klasy StudentBase (pierwsza ma przechowywać dane tylko w pamięci, a druga tylko w pliku)
-// W klasie operującej na pliku stwórz zmienną const z nazwą pliku, w której przechowujesz nazwę pliku i używaj jej w podczas wywołania operacji na tym pliku
-// W implementacji z obsługą pliku dodaj automatyczny zapis do drugiego pliku audytowego „audit.txt”, w którym oprócz ocen dodasz w każdej linii datę i godzinę ich wprowadzenia (użyj DateTime.UtcNow)
