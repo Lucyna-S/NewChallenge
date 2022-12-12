@@ -56,11 +56,20 @@ namespace ChallengeApp
         }
         public override void AddConsumption(string consumption)
         {
-            int result;
-            int.TryParse(consumption, out result);
-            if (result >= 4 && result <= 10)
+            var value = double.TryParse(consumption, out double result);
+            if (result >= 4.0 && result <= 10.0)
             {
                 this.consumptions.Add(result);
+
+                if (ConsumptionAdded != null)
+                {
+                    ConsumptionAdded(this, new EventArgs());
+                }
+                if ( result < 6 && ConsumptionLow != null)
+                {
+                    ConsumptionLow(this, new EventArgs());
+                }
+
             }
             else
             {

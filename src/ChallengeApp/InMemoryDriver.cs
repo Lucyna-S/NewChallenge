@@ -6,7 +6,7 @@ namespace ChallengeApp
 {
     public delegate void ConsumptionAddedDelegate(object sender, EventArgs args);
     public delegate void ConsumptionLowDelegate(object sender, EventArgs args);
-    public class InMemoryDriv : DriverBase
+    public class InMemoryDriver : DriverBase
     {
         private string name;
         private string surname;
@@ -15,12 +15,12 @@ namespace ChallengeApp
         public const string FIRM = "ITEC";
         private List<double> consumptions = new List<double>();
         private List<string> cars = new List<string>();
-        public InMemoryDriv(string name) : base(name)
+        public InMemoryDriver(string name) : base(name)
         {
             consumptions = new List<double>();
         }
 
-        public InMemoryDriv(string name, string surname, string car, char sex) : base(name, surname, car, sex)
+        public InMemoryDriver(string name, string surname, string car, char sex) : base(name, surname, car, sex)
         {
             this.sex = 'M';
         }
@@ -51,7 +51,7 @@ namespace ChallengeApp
             if (!digit)
             {
                 this.Surname = surname;
-                Console.WriteLine($"New Name is: {Surname}");
+                Console.WriteLine($"New Surname is: {Surname}");
             }
             else
             {
@@ -71,7 +71,7 @@ namespace ChallengeApp
                 {
                     ConsumptionAdded(this, new EventArgs());
                 }
-                if (consumption < 6 && ConsumptionLow != null)
+                if (consumption < 10 && ConsumptionLow != null)
                 {
                     ConsumptionLow(this, new EventArgs());
                 }
@@ -83,11 +83,20 @@ namespace ChallengeApp
         }
         public override void AddConsumption(string consumption)
         {
-            int result;
-            int.TryParse(consumption, out result);
-            if (result >= 4 && result <= 10)
+            var value = double.TryParse(consumption, out double result);
+            if (result >= 4.0 && result <= 10.0)
             {
                 this.consumptions.Add(result);
+
+                if (ConsumptionAdded != null)
+                {
+                    ConsumptionAdded(this, new EventArgs());
+                }
+                if ( result < 6 && ConsumptionLow != null)
+                {
+                    ConsumptionLow(this, new EventArgs());
+                }
+
             }
             else
             {

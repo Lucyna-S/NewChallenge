@@ -7,17 +7,17 @@ namespace ChallengeApp
     {
         static void Main(string[] args)
         {
-            var driver = new InMemoryDriv("Janek");
+            var driver = new InMemoryDriver("Janek");
 
-            var fullData = new InMemoryDriv("Jan", "Janowski", "Fiat", 'M');
+            var fullData = new InMemoryDriver("Jan", "Janowski", "Fiat", 'M');
 
             var name = driver.Name;
 
             driver.Name = "Jan";
 
-            var f = InMemoryDriv.FIRM;
+            var f = InMemoryDriver.FIRM;
 
-            driver.ChangeSurname("Janow8ski");
+            driver.ChangeSurname("Janowski");
 
             driver.CarBrand("Fiat");
 
@@ -25,7 +25,6 @@ namespace ChallengeApp
             driver.ConsumptionLow += OnConsumptionLow;
 
             EnterDriver(driver, f);
-
 
             driver.DriversAge();
 
@@ -50,17 +49,10 @@ namespace ChallengeApp
                 }
 
                 try
-
                 {
-                    if (input!= null)
-                    {
-                        var consumption = double.Parse(input);
-                        driver.AddConsumption(consumption);
-                    }
-                    else
-                    {
-                        driver.AddConsumption(input);
-                    }
+                    //var consumption = double.Parse(input);
+                    //driver.AddConsumption(consumption);
+                    driver.AddConsumption(input);
                     
                 }
                 catch (FormatException ex)
