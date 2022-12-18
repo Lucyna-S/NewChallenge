@@ -6,22 +6,59 @@ namespace ChallengeApp
 {
     public class SavedDriver : DriverBase
     {
-        private List<double> consumptions = new List<double>();
+        private List<double> consumptions;
         private const string fileName = "consumption.txt";
         private const string audit = "_audit.txt";
         DateTime saveNow = DateTime.Now;
+        private List<string> cars;
 
         public SavedDriver(string name) : base(name)
         {
-            consumptions = new List<double>();
+            this.consumptions = new List<double>();
         }
 
         public SavedDriver(string name, string surname, string car, char sex) : base(name, surname, car, sex)
         {
+            this.consumptions = new List<double>();
         }
 
         public override event ConsumptionAddedDelegate ConsumptionAdded;
         public override event ConsumptionLowDelegate ConsumptionLow;
+        public void ChangeSurname(string surname)
+        {
+            bool digit = false;
+            foreach (char c in surname)
+            {
+                if (char.IsDigit(c))
+                {
+                    digit = true;
+                }
+            }
+            if (!digit)
+            {
+                this.Surname = surname;
+                Console.WriteLine($"New Surname is: {Surname}");
+            }
+            else
+            {
+                Console.WriteLine($"New Surname have digit");
+            }
+        }
+         public override void CarBrand(string car)
+        {
+            {
+            this.cars = new List<string>();
+
+            if (!string.IsNullOrEmpty(car))
+            {
+                this.cars.Add(car);
+            }
+            else
+            {
+                Console.WriteLine("Car Brand invalid value");
+            }
+            }
+        }
 
         public override void AddConsumption(double consumption)
         {
@@ -123,10 +160,6 @@ namespace ChallengeApp
                     ConsumptionAdded(this, new EventArgs());
                 }
             }
-        }
-        public override void CarBrand(string car)
-        {
-            throw new NotImplementedException();
         }
         public override Statistics GetStatistics()
         {

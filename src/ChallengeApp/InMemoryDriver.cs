@@ -13,15 +13,16 @@ namespace ChallengeApp
         readonly char sex;
         private string car;
         public const string FIRM = "ITEC";
-        private List<double> consumptions = new List<double>();
+        private List<double> consumptions;
         private List<string> cars = new List<string>();
         public InMemoryDriver(string name) : base(name)
         {
-            consumptions = new List<double>();
+            this.consumptions = new List<double>();
         }
 
         public InMemoryDriver(string name, string surname, string car, char sex) : base(name, surname, car, sex)
         {
+            this.consumptions = new List<double>();
             this.sex = 'M';
         }
         public string NewName
@@ -32,7 +33,7 @@ namespace ChallengeApp
             }
             set
             {
-                if (!string.IsNullOrEmpty(value) && !string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrWhiteSpace(value))
                 {
                     this.name = value;
                 }

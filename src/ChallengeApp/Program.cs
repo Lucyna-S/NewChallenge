@@ -50,10 +50,7 @@ namespace ChallengeApp
 
                 try
                 {
-                    //var consumption = double.Parse(input);
-                    //driver.AddConsumption(consumption);
                     driver.AddConsumption(input);
-                    
                 }
                 catch (FormatException ex)
                 {
@@ -80,19 +77,3 @@ namespace ChallengeApp
         }
     }
 }
-
-
-// public override bool Equals(object obj)
-//         {
-//             return base.Equals(obj);
-//         }
-
-//         public override int GetHashCode()
-//         {
-//             return base.GetHashCode();
-//         }
-
-//         public override string ToString()
-//         {
-//             return base.ToString();
-//         }

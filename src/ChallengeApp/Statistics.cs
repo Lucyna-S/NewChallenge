@@ -57,29 +57,3 @@ namespace ChallengeApp
         }
       }
 } 
-
-
-//  for (var index =0; index < consumptions.Count; index ++)
-          // { 
-          //   if(consumptions[index]  == 5)
-          //   {
-          //     continue;
-          //   }
-          //     Low = Math.Min(consumptions[index], Low);
-          //     High = Math.Max(consumptions[index], High);
-          //     Average += consumptions[index];
-          // }
-
-// var result = 0.0;
-            // var highConsumption = double.MinValue;
-            // var lowConsumption = double.MaxValue;
-
-            // foreach (var n in consumptions)
-            // {
-            //     lowConsumption = Math.Min(lowConsumption, n);
-            //     highConsumption = Math.Max(highConsumption, n);
-            //     result += n;
-            // }
-            //Console.WriteLine($"The Low is:{lowConsumption:N1}");
-            //Console.WriteLine($"The High is:{highConsumption:N1}");
-            //result /= consumptions.Count;
