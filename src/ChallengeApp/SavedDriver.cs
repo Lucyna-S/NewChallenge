@@ -44,19 +44,19 @@ namespace ChallengeApp
                 Console.WriteLine($"New Surname have digit");
             }
         }
-         public override void CarBrand(string car)
+        public override void CarBrand(string car)
         {
             {
-            this.cars = new List<string>();
+                this.cars = new List<string>();
 
-            if (!string.IsNullOrEmpty(car))
-            {
-                this.cars.Add(car);
-            }
-            else
-            {
-                Console.WriteLine("Car Brand invalid value");
-            }
+                if (!string.IsNullOrEmpty(car))
+                {
+                    this.cars.Add(car);
+                }
+                else
+                {
+                    Console.WriteLine("Car Brand invalid value");
+                }
             }
         }
 
@@ -89,7 +89,7 @@ namespace ChallengeApp
                 {
                     ConsumptionAdded(this, new EventArgs());
                 }
-            }   
+            }
         }
         public override void AddConsumption(string consumption)
         {
@@ -102,7 +102,7 @@ namespace ChallengeApp
                 {
                     ConsumptionAdded(this, new EventArgs());
                 }
-                if ( result < 6 && ConsumptionLow != null)
+                if (result < 6 && ConsumptionLow != null)
                 {
                     ConsumptionLow(this, new EventArgs());
                 }

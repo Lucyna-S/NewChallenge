@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace ChallengeApp
 {
-    public abstract class DriverBase: NameObject, IDriver
+    public abstract class DriverBase : NameObject, IDriver
     {
-        public DriverBase(string name, string surname, string car, char sex): base(name, surname, car, sex)
-        {          
+        public DriverBase(string name, string surname, string car, char sex) : base(name, surname, car, sex)
+        {
         }
-        public DriverBase(string name): base(name)
-        {   
+        public DriverBase(string name) : base(name)
+        {
         }
         public abstract event ConsumptionAddedDelegate ConsumptionAdded;
         public abstract event ConsumptionLowDelegate ConsumptionLow;
@@ -23,6 +23,6 @@ namespace ChallengeApp
         public virtual void DriversAge()
         {
             throw new NotImplementedException();
-        }       
+        }
     }
 }

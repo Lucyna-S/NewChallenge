@@ -93,7 +93,7 @@ namespace ChallengeApp
                 {
                     ConsumptionAdded(this, new EventArgs());
                 }
-                if ( result < 6 && ConsumptionLow != null)
+                if (result < 6 && ConsumptionLow != null)
                 {
                     ConsumptionLow(this, new EventArgs());
                 }
