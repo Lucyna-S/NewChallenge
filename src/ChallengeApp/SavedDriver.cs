@@ -6,7 +6,7 @@ namespace ChallengeApp
 {
     public class SavedDriver : DriverBase
     {
-        private List<double> consumptions;
+        
         private const string fileName = "consumption.txt";
         private const string audit = "_audit.txt";
         DateTime saveNow = DateTime.Now;
@@ -14,16 +14,17 @@ namespace ChallengeApp
 
         public SavedDriver(string name) : base(name)
         {
-            this.consumptions = new List<double>();
+        
         }
 
         public SavedDriver(string name, string surname, string car, char sex) : base(name, surname, car, sex)
         {
-            this.consumptions = new List<double>();
+
         }
 
         public override event ConsumptionAddedDelegate ConsumptionAdded;
         public override event ConsumptionLowDelegate ConsumptionLow;
+        
         public void ChangeSurname(string surname)
         {
             bool digit = false;
@@ -44,6 +45,7 @@ namespace ChallengeApp
                 Console.WriteLine($"New Surname have digit");
             }
         }
+
         public override void CarBrand(string car)
         {
             {
@@ -91,6 +93,7 @@ namespace ChallengeApp
                 }
             }
         }
+
         public override void AddConsumption(string consumption)
         {
             var value = double.TryParse(consumption, out double result);
@@ -161,6 +164,7 @@ namespace ChallengeApp
                 }
             }
         }
+
         public override Statistics GetStatistics()
         {
             var result = new Statistics();
@@ -177,6 +181,5 @@ namespace ChallengeApp
             }
             return result;
         }
-
     }
 }

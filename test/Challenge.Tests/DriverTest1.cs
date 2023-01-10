@@ -22,7 +22,6 @@ namespace Challenge.Tests
             Assert.Equal(5.8, result.Average, 1);
             Assert.Equal(6.4, result.High);
             Assert.Equal(5.2, result.Low);
-
         }
     }
 }

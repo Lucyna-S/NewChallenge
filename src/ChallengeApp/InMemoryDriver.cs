@@ -25,20 +25,7 @@ namespace ChallengeApp
             this.consumptions = new List<double>();
             this.sex = 'M';
         }
-        public string NewName
-        {
-            get
-            {
-                return this.name.ToLower();
-            }
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                {
-                    this.name = value;
-                }
-            }
-        }
+
         public void ChangeSurname(string surname)
         {
             bool digit = false;
@@ -59,6 +46,7 @@ namespace ChallengeApp
                 Console.WriteLine($"New Surname have digit");
             }
         }
+
         public override event ConsumptionAddedDelegate ConsumptionAdded;
         public override event ConsumptionLowDelegate ConsumptionLow;
 
@@ -82,6 +70,7 @@ namespace ChallengeApp
                 throw new ArgumentException($"Invalid argumnet: {nameof(consumption)}");
             }
         }
+
         public override void AddConsumption(string consumption)
         {
             var value = double.TryParse(consumption, out double result);
@@ -144,16 +133,7 @@ namespace ChallengeApp
                 }
             }
         }
-        public override void DriversAge()
-        {
-            const int year = 2022;
-            var bornyear = new[] { 1997, 1986, 1995, 1989, 2000, 1981, 2002, 2004, 1983, 2001 };
-            var driver = new[] { "Piotr", "Szymon", "Tadeusz", "Jan", "Jakub", "Andrzej", "Filip", "Bartłomiej", "Tomasz", "Mateusz" };
 
-            for (var index = 0; index < driver.Length; index++)
-
-                Console.WriteLine($"Name Driver and age: {driver[index]} {(year - bornyear[index])} years old.");
-        }
         public override void CarBrand(string car)
         {
             this.car = car;
@@ -176,6 +156,5 @@ namespace ChallengeApp
             }
             return result;
         }
-
     }
 }

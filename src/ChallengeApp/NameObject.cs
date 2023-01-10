@@ -10,6 +10,7 @@ namespace ChallengeApp
         {
             this.Name = name;
         }
+
         public NameObject(string name, string surname, string car, char sex)
         {
             this.Name = name;
@@ -17,6 +18,7 @@ namespace ChallengeApp
             this.Car = car;
             this.Sex = sex;
         }
+        
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Car { get; set; }

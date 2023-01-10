@@ -105,3 +105,5 @@ C:\Users\x\Desktop\NewChallenge\test\Challenge.Tests\bin\Debug\net5.0\ChallengeA
 C:\Users\x\Desktop\NewChallenge\test\Challenge.Tests\bin\Debug\net5.0\ChallengeApp.exe
 C:\Users\x\Desktop\NewChallenge\test\Challenge.Tests\bin\Debug\net5.0\ChallengeApp.dll
 C:\Users\x\Desktop\NewChallenge\test\Challenge.Tests\bin\Debug\net5.0\ChallengeApp.pdb
+C:\Users\smies_j2lzna9\firstRepsitory\NewChallenge\test\Challenge.Tests\obj\Debug\net5.0\Challenge.Tests.dll
+C:\Users\smies_j2lzna9\firstRepsitory\NewChallenge\test\Challenge.Tests\obj\Debug\net5.0\Challenge.Tests.pdb

@@ -15,7 +15,7 @@ namespace ChallengeApp
 
             driver.Name = "Jan";
 
-            var f = InMemoryDriver.FIRM;
+            var company = InMemoryDriver.FIRM;
 
             driver.ChangeSurname("Janowski");
 
@@ -24,9 +24,7 @@ namespace ChallengeApp
             driver.ConsumptionAdded += OnConsumptionAdded;
             driver.ConsumptionLow += OnConsumptionLow;
 
-            EnterDriver(driver, f);
-
-            driver.DriversAge();
+            EnterDriver(driver, company);
 
             var stats = driver.GetStatistics();
 
@@ -40,7 +38,7 @@ namespace ChallengeApp
         {
             while (true)
             {
-                Console.WriteLine($"Hello! Enter consumption for {driver.Name} works at {f}. Press 'q' to break");
+                Console.WriteLine($"Hello! Enter consumption for {driver.Name} works at {company}. Press 'q' to break");
                 var input = Console.ReadLine();
 
                 if (input == "q")
@@ -60,10 +58,6 @@ namespace ChallengeApp
                 {
                     Console.WriteLine(ex.Message);
                 }
-                finally
-                {
-                    Console.WriteLine("Here is finally");
-                }
             }
         }
 
@@ -71,6 +65,7 @@ namespace ChallengeApp
         {
             Console.WriteLine("New consumption is added");
         }
+
         static void OnConsumptionLow(object sender, EventArgs args)
         {
             Console.WriteLine("Oh yes! We should inform boss about that");

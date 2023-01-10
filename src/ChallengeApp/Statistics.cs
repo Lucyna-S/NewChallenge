@@ -27,19 +27,20 @@ namespace ChallengeApp
                 return Sum / Count;
             }
         }
+
         public char Letter
         {
             get
             {
                 switch (Average)
                 {
-                    case var d when d <= 6:
+                    case <= 6:
                         return 'A';
 
-                    case var d when d <= 8:
+                    case <= 8:
                         return 'B';
 
-                    case var d when d <= 10:
+                    case <= 10:
                         return 'C';
 
                     default:
@@ -47,13 +48,13 @@ namespace ChallengeApp
                 }
             }
         }
+
         public void Add(double number)
         {
             Sum += number;
             Count += 1;
             Low = Math.Min(number, Low);
             High = Math.Max(number, High);
-
         }
     }
 }

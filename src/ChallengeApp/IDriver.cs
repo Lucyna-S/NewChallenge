@@ -7,7 +7,6 @@ namespace ChallengeApp
     {
         void AddConsumption(double consumption);
         void AddConsumption(string consumption);
-        void DriversAge();
         void CarBrand(string car);
         Statistics GetStatistics();
         string Name { get; }
