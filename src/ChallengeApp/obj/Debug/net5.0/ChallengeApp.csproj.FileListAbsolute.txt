@@ -37,3 +37,12 @@ C:\Users\smies_j2lzna9\firstRepsitory\NewChallenge\src\ChallengeApp\obj\Debug\ne
 C:\Users\smies_j2lzna9\firstRepsitory\NewChallenge\src\ChallengeApp\obj\Debug\net5.0\ChallengeApp.csproj.CoreCompileInputs.cache
 C:\Users\smies_j2lzna9\firstRepsitory\NewChallenge\src\ChallengeApp\obj\Debug\net5.0\ChallengeApp.dll
 C:\Users\smies_j2lzna9\firstRepsitory\NewChallenge\src\ChallengeApp\obj\Debug\net5.0\ChallengeApp.pdb
+C:\Users\smies_j2lzna9\firstRepsitory\NewChallenge\src\ChallengeApp\bin\Debug\net5.0\ChallengeApp.exe
+C:\Users\smies_j2lzna9\firstRepsitory\NewChallenge\src\ChallengeApp\bin\Debug\net5.0\ChallengeApp.deps.json
+C:\Users\smies_j2lzna9\firstRepsitory\NewChallenge\src\ChallengeApp\bin\Debug\net5.0\ChallengeApp.runtimeconfig.json
+C:\Users\smies_j2lzna9\firstRepsitory\NewChallenge\src\ChallengeApp\bin\Debug\net5.0\ChallengeApp.runtimeconfig.dev.json
+C:\Users\smies_j2lzna9\firstRepsitory\NewChallenge\src\ChallengeApp\bin\Debug\net5.0\ChallengeApp.dll
+C:\Users\smies_j2lzna9\firstRepsitory\NewChallenge\src\ChallengeApp\bin\Debug\net5.0\ChallengeApp.pdb
+C:\Users\smies_j2lzna9\firstRepsitory\NewChallenge\src\ChallengeApp\obj\Debug\net5.0\refint\ChallengeApp.dll
+C:\Users\smies_j2lzna9\firstRepsitory\NewChallenge\src\ChallengeApp\obj\Debug\net5.0\ChallengeApp.genruntimeconfig.cache
+C:\Users\smies_j2lzna9\firstRepsitory\NewChallenge\src\ChallengeApp\obj\Debug\net5.0\ref\ChallengeApp.dll

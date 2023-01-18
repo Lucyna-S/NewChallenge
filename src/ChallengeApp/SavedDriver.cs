@@ -6,25 +6,21 @@ namespace ChallengeApp
 {
     public class SavedDriver : DriverBase
     {
-        
+        public const string FIRM = "ITEC";      
         private const string fileName = "consumption.txt";
         private const string audit = "_audit.txt";
         DateTime saveNow = DateTime.Now;
         private List<string> cars;
-
         public SavedDriver(string name) : base(name)
         {
-        
         }
 
         public SavedDriver(string name, string surname, string car, char sex) : base(name, surname, car, sex)
         {
-
         }
 
         public override event ConsumptionAddedDelegate ConsumptionAdded;
         public override event ConsumptionLowDelegate ConsumptionLow;
-        
         public void ChangeSurname(string surname)
         {
             bool digit = false;
@@ -46,7 +42,7 @@ namespace ChallengeApp
             }
         }
 
-        public override void CarBrand(string car)
+        public override void InsertCarBrand(string car)
         {
             {
                 this.cars = new List<string>();
@@ -61,37 +57,26 @@ namespace ChallengeApp
                 }
             }
         }
-
+     
         public override void AddConsumption(double consumption)
         {
-            {
-                if (consumption >= 4.0 && consumption <= 10.0)
-                {
-                    this.consumptions.Add(consumption);
-
-                    if (ConsumptionAdded != null)
-                    {
-                        ConsumptionAdded(this, new EventArgs());
-                    }
-                    if (consumption < 6 && ConsumptionLow != null)
-                    {
-                        ConsumptionLow(this, new EventArgs());
-                    }
-                }
-                else
-                {
-                    throw new ArgumentException($"Invalid argumnet: {nameof(consumption)}");
-                }
-            }
-
-            using (var writer = File.AppendText($"{Name}_{fileName}"))
-            {
-                writer.WriteLine(consumption);
+            WriteAddConsumptionInfile(consumption);
+            if (consumption >= 4.0 && consumption <= 10.0)
+            {    
                 if (ConsumptionAdded != null)
                 {
                     ConsumptionAdded(this, new EventArgs());
                 }
+                if (consumption < 6 && ConsumptionLow != null)
+                {
+                    ConsumptionLow(this, new EventArgs());
+                }
+            }    
+            else
+            {
+                throw new ArgumentException($"Invalid argumnet: {nameof(consumption)}");
             }
+                
         }
 
         public override void AddConsumption(string consumption)
@@ -99,8 +84,7 @@ namespace ChallengeApp
             var value = double.TryParse(consumption, out double result);
             if (result >= 4.0 && result <= 10.0)
             {
-                this.consumptions.Add(result);
-
+                WriteAddConsumptionwithPlusInfile(consumption);
                 if (ConsumptionAdded != null)
                 {
                     ConsumptionAdded(this, new EventArgs());
@@ -109,7 +93,6 @@ namespace ChallengeApp
                 {
                     ConsumptionLow(this, new EventArgs());
                 }
-
             }
             else
             {
@@ -155,21 +138,34 @@ namespace ChallengeApp
                         throw new ArgumentException($"Invalid argumnet: {nameof(consumption)}");
                 }
             }
-            using (var writer = File.AppendText($"{Name}_{audit}"))
+        }
+        public void WriteAddConsumptionInfile(double consumption)
+        {
+            using (var writer = File.AppendText($"{Name}_{fileName}"))
             {
-                writer.WriteLine($"{consumption} of {saveNow}");
-                if (ConsumptionAdded != null)
-                {
-                    ConsumptionAdded(this, new EventArgs());
-                }
+                writer.WriteLine(consumption);
+            }
+            using (var writer2 = File.AppendText($"{Name}_{audit}"))
+            {
+                writer2.WriteLine($"{consumption} of {saveNow}");
             }
         }
-
+        public void WriteAddConsumptionwithPlusInfile(string consumption)
+        {
+            using (var writer = File.AppendText($"{Name}_{fileName}"))
+            {
+                writer.WriteLine(consumption);
+            }
+            using (var writer2 = File.AppendText($"{Name}_{audit}"))
+            {
+                writer2.WriteLine($"{consumption} of {saveNow}");
+            }
+        }
         public override Statistics GetStatistics()
         {
             var result = new Statistics();
-
-            using (var reader = File.OpenText($"{Name}_{audit}"))
+            
+            using (var reader = File.OpenText($"{Name}_{fileName}"))
             {
                 var line = reader.ReadLine();
                 while (line != null)

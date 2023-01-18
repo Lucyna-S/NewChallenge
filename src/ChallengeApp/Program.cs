@@ -8,18 +8,21 @@ namespace ChallengeApp
         static void Main(string[] args)
         {
             var driver = new InMemoryDriver("Janek");
+          //var driver = new SavedDriver("Janek");
 
             var fullData = new InMemoryDriver("Jan", "Janowski", "Fiat", 'M');
+          //var fullData = new SavedDriver("Jan", "Janowski", "Fiat", 'M');
 
             var name = driver.Name;
 
             driver.Name = "Jan";
 
             var company = InMemoryDriver.FIRM;
+          //var company = SavedDriver.FIRM;
 
             driver.ChangeSurname("Janowski");
 
-            driver.CarBrand("Fiat");
+            driver.InsertCarBrand("Fiat");
 
             driver.ConsumptionAdded += OnConsumptionAdded;
             driver.ConsumptionLow += OnConsumptionLow;
@@ -34,7 +37,7 @@ namespace ChallengeApp
             Console.WriteLine($"Letter:{stats.Letter}");
         }
 
-        private static void EnterDriver(IDriver driver, string f)
+        private static void EnterDriver(IDriver driver, string company)
         {
             while (true)
             {

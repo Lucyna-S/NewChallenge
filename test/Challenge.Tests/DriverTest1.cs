@@ -10,7 +10,7 @@ namespace Challenge.Tests
         public void Test1()
         {
             // arrange
-            var driv = new InMemoryDriv("Jan");
+            var driv = new InMemoryDriver("Jan");
             driv.AddConsumption(5.2);
             driv.AddConsumption(5.7);
             driv.AddConsumption(6.4);

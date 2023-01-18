@@ -60,7 +60,7 @@ namespace ChallengeApp
                 {
                     ConsumptionAdded(this, new EventArgs());
                 }
-                if (consumption < 10 && ConsumptionLow != null)
+                if (consumption < 6 && ConsumptionLow != null)
                 {
                     ConsumptionLow(this, new EventArgs());
                 }
@@ -86,7 +86,6 @@ namespace ChallengeApp
                 {
                     ConsumptionLow(this, new EventArgs());
                 }
-
             }
             else
             {
@@ -134,7 +133,7 @@ namespace ChallengeApp
             }
         }
 
-        public override void CarBrand(string car)
+        public override void InsertCarBrand(string car)
         {
             this.car = car;
             if (!string.IsNullOrEmpty(car))

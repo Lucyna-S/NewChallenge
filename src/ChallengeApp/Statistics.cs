@@ -6,12 +6,10 @@ namespace ChallengeApp
     public class Statistics
     {
         public double High;
-
         public double Low;
-
         public double Sum;
-
         public int Count;
+
         public Statistics()
         {
             Count = 0;
@@ -36,13 +34,10 @@ namespace ChallengeApp
                 {
                     case <= 6:
                         return 'A';
-
                     case <= 8:
                         return 'B';
-
                     case <= 10:
                         return 'C';
-
                     default:
                         return 'Z';
                 }
