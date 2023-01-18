@@ -6,31 +6,7 @@ namespace Challenge.Tests
 {
     public class TypeTests
     {
-        public delegate string WriteMessage(string message);
-
-        int counter = 0;
-        [Fact]
-        public void WriteMessageDelegateCanPointToMethod()
-        {
-            WriteMessage del = ReturnMessage;
-            del += ReturnMessage;
-            del += ReturnMessage2;
-            var result = del("HELLO");
-            Assert.Equal(3, counter);
-        }
-
-        string ReturnMessage(string message)
-        {
-            counter++;
-            return message;
-        }
-
-        string ReturnMessage2(string message)
-        {
-            counter++;
-            return message.ToUpper();
-        }
-
+    
         [Fact]
         public void GetDriverReturnsDifferentObjects()
         {
@@ -51,6 +27,7 @@ namespace Challenge.Tests
             Assert.True(Object.ReferenceEquals(driv1, driv2));
         }
 
+        [Fact]
         public void CanSetNameFromReference()
         {
             var driv1 = GetDriver("Jan");
@@ -65,25 +42,25 @@ namespace Challenge.Tests
             Assert.Equal("NewName", driv1.Name);
         }
 
-        private void GetDriverSetName(out InMemoryDriv driv, string name)
+        private void GetDriverSetName(out InMemoryDriver driv, string name)
         {
-            driv = new InMemoryDriv(name);
+            driv = new InMemoryDriver(name);
         }
 
-        private InMemoryDriv GetDriver(string name)
+        private InMemoryDriver GetDriver(string name)
         {
-            return new InMemoryDriv(name);
+            return new InMemoryDriver(name);
         }
 
-        public void SetName(InMemoryDriv driver, string name)
+        public void SetName(InMemoryDriver driver, string name)
         {
             driver.Name = name;
         }
 
         public void Test1()
         {
-            SetInt(
-            var x = GetInt();ref x);
+            var x = GetInt();
+            SetInt(ref x);
 
             Assert.Equal(3, x);
         }
